@@ -1,0 +1,194 @@
+/* Minimalistic Light Tic Tac Toe Theme (custom palette) */
+
+:root {
+  --ttt-primary: #1976d2;
+  --ttt-secondary: #90caf9;
+  --ttt-accent: #ffb300;
+  --ttt-bg: #fff;
+  --ttt-board-border: #e9ecef;
+  --ttt-x: #1976d2;
+  --ttt-o: #ffb300;
+  --ttt-text: #282c34;
+  --ttt-win: #90caf9;
+}
+
+body {
+  background: var(--ttt-bg);
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--ttt-text);
+}
+
+.ttt-app-bg {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--ttt-bg);
+  align-items: center;
+}
+
+.ttt-outer-container {
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 2px 24px 0 rgba(33, 33, 33, 0.07);
+  padding: 2.5rem 2rem 2rem 2rem;
+  margin: 2rem 0 1rem 0;
+  max-width: 95vw;
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ttt-title {
+  margin: 0 0 20px 0;
+  color: var(--ttt-primary);
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 2.1rem;
+  text-align: center;
+}
+
+.ttt-board {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  justify-content: center;
+  margin: 18px 0 0 0;
+}
+.ttt-board-row {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+}
+.ttt-square {
+  width: 80px;
+  height: 80px;
+  background: #fff;
+  border: 2px solid var(--ttt-board-border);
+  font-size: 2.4rem;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  transition: background 0.14s, border-color 0.14s, color 0.14s;
+  text-align: center;
+  line-height: 1.2;
+}
+.ttt-square:not(:disabled):hover, .ttt-square:not(:disabled):focus {
+  background: #f8fafb;
+  border-color: var(--ttt-accent);
+}
+.ttt-square[disabled] {
+  background: #f8fafb;
+  color: #bbb;
+  cursor: not-allowed;
+}
+
+.ttt-square.ttt-square-win {
+  background: var(--ttt-secondary);
+  border-color: var(--ttt-win);
+  color: var(--ttt-win);
+}
+
+@media (max-width: 580px) {
+  .ttt-square {
+    width: 55px;
+    height: 55px;
+    font-size: 1.5rem;
+  }
+  .ttt-outer-container {
+    padding: 1.1rem 0.5rem 1.4rem 0.5rem;
+    min-width: 240px;
+  }
+  .ttt-title {
+    font-size: 1.3rem;
+  }
+}
+
+.ttt-player-indicator {
+  margin-bottom: 6px;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  justify-content: center;
+  letter-spacing: 1px;
+  user-select: none;
+}
+.ttt-indicator {
+  padding: 2px 17px;
+  border-radius: 12px;
+  font-weight: 500;
+  color: #fff;
+  background: var(--ttt-board-border);
+  transition: background 0.22s, color 0.22s;
+}
+.ttt-indicator:first-child {
+  background: var(--ttt-x);
+}
+.ttt-indicator:last-child {
+  background: var(--ttt-o);
+}
+.ttt-active {
+  background: var(--ttt-accent)!important;
+  color: var(--ttt-text)!important;
+  filter: brightness(1.15);
+}
+
+.ttt-separator {
+  margin: 0 5px;
+  color: var(--ttt-board-border);
+  font-size: 1.2em;
+  font-weight: 400;
+}
+.ttt-status {
+  margin: 22px 0 14px 0;
+  font-size: 1.1rem;
+  color: var(--ttt-text);
+  text-align: center;
+  min-height: 1.5em;
+  letter-spacing: 0.2px;
+  font-weight: 400;
+}
+
+.ttt-reset-btn {
+  margin-top: 6px;
+  background: var(--ttt-accent);
+  color: var(--ttt-text);
+  border: none;
+  border-radius: 16px;
+  padding: 11px 32px;
+  font-size: 1rem;
+  letter-spacing: .1em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.17s, box-shadow 0.17s;
+  box-shadow: 0 1px 4px 0 rgba(33,33,33,0.04);
+  outline: none;
+}
+.ttt-reset-btn:hover, .ttt-reset-btn:focus {
+  background: #ffc233;
+  color: #15191b;
+}
+
+.ttt-footer {
+  margin: 0.8rem auto 0.25rem auto;
+  text-align: center;
+  font-size: 0.93rem;
+  opacity: 0.64;
+  letter-spacing: 0.02em;
+  font-weight: 400;
+}
+
+/* Remove number input stepper on focus (for mobile) */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
